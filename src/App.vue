@@ -6,6 +6,12 @@
         <router-view /> -->
         <Header />
 
+        <div
+            id="error"
+            v-if="questions.length == 0"
+            :class="{ showError: questions.length == 0 }"
+        ></div>
+
         <b-container class="bv-example-row">
             <b-row>
                 <b-col sm="6" offset="3">
@@ -32,30 +38,47 @@ export default {
     },
     data() {
         return {
-            amount: 10,
-            category: 21,
-            url: `https://opentdb.com/api.php?amount=${this.amount}&category=${this.category}&type=multiple`,
-            method: "get",
             questions: [],
             index: 0,
+            // amount: 10,
+            // category: 21,
         };
     },
     methods: {
         next() {
             this.index += 1;
         },
+        fetchQuestion() {
+            let amount = 10;
+            let category = 21;
+            let url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=multiple`;
+            const method = "get";
+            fetch(url, {
+                method,
+            })
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    this.questions = data.results;
+                })
+                .catch((error) => {
+                    if (error) {
+                        let p = document.createElement("p");
+                        p.innerHTML =
+                            "Failed to load question due to poor internet connection. Please try again!";
+                        let errorDiv = document.getElementById("error");
+                        errorDiv.appendChild(p);
+                    }
+                });
+        },
     },
     mounted() {
-        fetch(this.url, {
-            method: this.method,
-        })
-            .then((resp) => {
-                let response = resp.json();
-                return response;
-            })
-            .then((data) => {
-                this.questions = data.results;
-            });
+        // url format: https://opentdb.com/api.php?amount=15&category=19&difficulty=medium&type=multiple
+        // category 9 = general knowledge, 19 = mathematics, 21 = sports, 27 = animals
+        // type=boolean or multiple
+
+        this.fetchQuestion;
     },
 };
 </script>
@@ -67,6 +90,21 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+}
+
+.show-error {
+    background: #f00;
+    color: #fff;
+}
+
+#error {
+    margin: 20px auto;
+    padding: 20px 10px;
+    border-radius: 5px;
+}
+
+#error p {
+    margin: 0;
 }
 
 /* #nav {
