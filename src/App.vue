@@ -48,37 +48,34 @@ export default {
         next() {
             this.index += 1;
         },
-        fetchQuestion() {
-            let amount = 10;
-            let category = 21;
-            let url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=multiple`;
-            const method = "get";
-            fetch(url, {
-                method,
-            })
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    this.questions = data.results;
-                })
-                .catch((error) => {
-                    if (error) {
-                        let p = document.createElement("p");
-                        p.innerHTML =
-                            "Failed to load question due to poor internet connection. Please try again!";
-                        let errorDiv = document.getElementById("error");
-                        errorDiv.appendChild(p);
-                    }
-                });
-        },
     },
     mounted() {
         // url format: https://opentdb.com/api.php?amount=15&category=19&difficulty=medium&type=multiple
         // category 9 = general knowledge, 19 = mathematics, 21 = sports, 27 = animals
         // type=boolean or multiple
 
-        this.fetchQuestion;
+        let amount = 10;
+        let category = 21;
+        let url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=multiple`;
+        const method = "get";
+        fetch(url, {
+            method,
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                this.questions = data.results;
+            })
+            .catch((error) => {
+                if (error) {
+                    let p = document.createElement("p");
+                    p.innerHTML =
+                        "Failed to load question due to poor internet connection. Please try again!";
+                    let errorDiv = document.getElementById("error");
+                    errorDiv.appendChild(p);
+                }
+            });
     },
 };
 </script>
