@@ -8,7 +8,13 @@
 
         <b-container class="bv-example-row">
             <b-row>
-                <b-col sm="6" offset="3"><QuestionBox /></b-col>
+                <b-col sm="6" offset="3">
+                    <QuestionBox
+                        v-if="questions.length"
+                        :currentQuestion="questions[index]"
+                        :nextQuestion="next"
+                    />
+                </b-col>
             </b-row>
         </b-container>
     </div>
@@ -23,6 +29,33 @@ export default {
     components: {
         Header,
         QuestionBox,
+    },
+    data() {
+        return {
+            amount: 10,
+            category: 21,
+            url: `https://opentdb.com/api.php?amount=${this.amount}&category=${this.category}&type=multiple`,
+            method: "get",
+            questions: [],
+            index: 0,
+        };
+    },
+    methods: {
+        next() {
+            this.index += 1;
+        },
+    },
+    mounted() {
+        fetch(this.url, {
+            method: this.method,
+        })
+            .then((resp) => {
+                let response = resp.json();
+                return response;
+            })
+            .then((data) => {
+                this.questions = data.results;
+            });
     },
 };
 </script>
