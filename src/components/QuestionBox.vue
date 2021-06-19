@@ -1,6 +1,6 @@
 <template>
     <div class="question-box-container">
-        <b-jumbotron class="bg-light">
+        <b-jumbotron>
             <template #lead>
                 {{ currentQuestion.question }}
             </template>
@@ -12,6 +12,7 @@
                     v-for="(answer, index) in answers"
                     :key="index"
                     @click="selectedAnswer(index)"
+                    :class="[selectedIndex === index ? 'selected' : '']"
                 >
                     {{ answer }}
                 </b-list-group-item>
@@ -54,19 +55,42 @@ export default {
 </script>
 
 <style scoped>
+.question-box-container {
+    min-width: 400px;
+    margin-top: 20px;
+}
 .jumbotron {
-    padding: 4rem 2rem;
+    padding: 4rem 3rem;
+    width: 100%;
+    background-color: #f2f2f2;
+}
+.lead {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .list-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
-
-.list-group-item:hover {
+.list-group-item {
     cursor: pointer;
-    background: #eee;
 }
-
+.list-group-item:not(.selected):hover {
+    background-color: #eee;
+}
 .btn {
     margin: 0 5px;
+    width: 100px;
+}
+.btn:focus,
+.btn:active {
+    box-shadow: none !important;
+}
+.selected {
+    background-color: lightblue;
+}
+.correct {
+    background-color: lightgreen;
+}
+.incorrect {
+    background-color: #f00;
 }
 </style>

@@ -81,25 +81,30 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: "lato", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    /* color: #2c3e50; */
+    color: #222;
 }
-
 .show-error {
     background: #f00;
     color: #fff;
 }
-
 #error {
     margin: 20px auto;
     padding: 20px 10px;
     border-radius: 5px;
 }
-
 #error p {
     margin: 0;
 }
