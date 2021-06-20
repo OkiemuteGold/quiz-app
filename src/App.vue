@@ -57,8 +57,8 @@ export default {
         // category 9 = general knowledge, 19 = mathematics, 21 = sports, 27 = animals
         // type=boolean or multiple
 
-        let amount = 10;
-        let category = 27;
+        let amount = 20;
+        let category = 19;
         let url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=multiple`;
         const method = "get";
         fetch(url, {
@@ -88,7 +88,8 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #222;
+    overflow: hidden;
 }
 .showError {
     background: #f00;

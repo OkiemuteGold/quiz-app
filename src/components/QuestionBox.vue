@@ -13,6 +13,7 @@
                     :key="index"
                     @click.prevent="selectedAnswer(index)"
                     :class="answerClass(index)"
+                    :disabled="answered"
                 >
                     {{ answer }}
                 </b-list-group-item>
@@ -86,13 +87,13 @@ export default {
             if (!this.answered && this.selectedIndex === index) {
                 answerClass = "selected";
             } else if (this.answered && this.correctIndex === index) {
-                answerClass = "correct";
+                answerClass = "correct animateCorrectClass";
             } else if (
                 this.answered &&
                 this.selectedIndex === index &&
                 this.correctIndex !== index
             ) {
-                answerClass = "incorrect";
+                answerClass = "incorrect animateIncorrectClass";
             }
             return answerClass;
         },
@@ -118,27 +119,99 @@ export default {
 }
 .list-group-item {
     margin-bottom: 5px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: 0.4s ease;
+    transition: 0.4s ease-in-out;
+    letter-spacing: 0.5px;
 }
 .list-group-item:not(.selected):hover {
-    background-color: #edf5f7;
+    background-color: #e8f1f3;
 }
 .btn {
     margin: 0 5px;
     width: 90px;
+    border-radius: 5px;
+    transition: 0.4s ease;
+}
+.btn:hover {
+    transform: scale(0.98);
 }
 .btn:focus,
 .btn:active {
     box-shadow: none !important;
 }
+
 .selected {
-    background-color: lightblue;
+    background: lightblue;
+}
+.correct,
+.incorrect {
+    font-weight: 500;
 }
 .correct {
-    background-color: lightgreen;
+    background: lightgreen;
 }
 .incorrect {
-    background-color: #f00;
+    background: red;
+}
+
+.animateCorrectClass,
+.animateIncorrectClass {
+    animation-duration: 1.3s;
+    animation-fill-mode: forwards;
+}
+.animateCorrectClass {
+    animation-name: animateCorrectClass;
+}
+.animateIncorrectClass {
+    animation-name: animateIncorrectClass;
+}
+
+@keyframes animateCorrectClass {
+    0%,
+    35%,
+    75% {
+        font-weight: 400;
+        background: lightgreen;
+        color: #444;
+    }
+
+    25%,
+    50%,
+    90% {
+        font-weight: 300;
+        background: #ceffce;
+        color: #888;
+    }
+
+    100% {
+        font-weight: 500;
+        background: lightgreen;
+        color: #222;
+    }
+}
+
+@keyframes animateIncorrectClass {
+    0%,
+    35%,
+    75% {
+        font-weight: 400;
+        background: red;
+        color: #444;
+    }
+
+    25%,
+    50%,
+    90% {
+        font-weight: 300;
+        background: #fa9a9a;
+        color: #888;
+    }
+
+    100% {
+        font-weight: 500;
+        background: red;
+        color: #222;
+    }
 }
 </style>
