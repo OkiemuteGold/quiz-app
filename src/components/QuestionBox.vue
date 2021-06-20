@@ -12,7 +12,7 @@
                     v-for="(answer, index) in answers"
                     :key="index"
                     @click="selectedAnswer(index)"
-                    :class="[selectedIndex === index ? 'selected' : '']"
+                    :class="answerClass(index)"
                 >
                     {{ answer }}
                 </b-list-group-item>
@@ -21,7 +21,7 @@
             <b-button
                 variant="success"
                 @click="submitAnswer"
-                :disabled="selectedIndex === null || isAnswered"
+                :disabled="selectedIndex === null || answered"
             >
                 Submit
             </b-button>
@@ -44,8 +44,9 @@ export default {
     data() {
         return {
             selectedIndex: null,
+            correctIndex: null,
             shuffledAnswers: [],
-            isAnswered: false,
+            answered: false,
         };
     },
     computed: {
@@ -55,16 +56,26 @@ export default {
             return answers;
         },
     },
+    watch: {
+        currentQuestion: {
+            immediate: true,
+            handler() {
+                this.selectedIndex = null;
+                this.answered = false;
+                this.shuffleAnswers();
+            },
+        },
+    },
     methods: {
         selectedAnswer(index) {
             this.selectedIndex = index;
         },
         submitAnswer() {
             let isCorrect = false;
-            if (this.selectedIndex === this.currentQuestion.correct_answer) {
+            if (this.selectedIndex === this.correctIndex) {
                 isCorrect = true;
             }
-            this.isAnswered = true;
+            this.answered = true;
             this.increment(isCorrect);
         },
         shuffleAnswers() {
@@ -73,16 +84,36 @@ export default {
                 this.currentQuestion.correct_answer,
             ];
             this.shuffledAnswers = _.shuffle(answers);
+            this.correctIndex = this.shuffledAnswers.indexOf(
+                this.currentQuestion.correct_answer
+            );
         },
-    },
-    watch: {
-        currentQuestion: {
-            immediate: true,
-            handler() {
-                this.selectedIndex = null;
-                this.isAnswered = false;
-                this.shuffleAnswers();
-            },
+        answerClass(index) {
+            let answerClass = "";
+            if (!this.answered && this.selectedIndex === null) {
+                answerClass = "selected";
+            } else if (this.answered && this.correctIndex === index) {
+                answerClass = "correct";
+            } else if (
+                this.answered &&
+                this.selectedIndex === index &&
+                this.correctIndex !== index
+            ) {
+                answerClass = "incorrect";
+            }
+            return answerClass;
+
+            // [
+            //     !answered && selectedIndex === null
+            //         ? "selected"
+            //         : answered && correctIndex === index
+            //         ? "correct"
+            //         : answered &&
+            //           selectedIndex === index &&
+            //           correctIndex !== index
+            //         ? "incorrect"
+            //         : "",
+            // ];
         },
     },
 };

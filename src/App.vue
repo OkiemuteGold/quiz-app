@@ -49,13 +49,13 @@ export default {
     },
     methods: {
         next() {
-            this.index += 1;
+            this.index++;
         },
         increment(isCorrect) {
             if (isCorrect) {
-                this.numCorrect += 1;
+                this.numCorrect++;
             }
-            this.numTotal += 1;
+            this.numTotal++;
         },
     },
     mounted() {
@@ -64,7 +64,7 @@ export default {
         // type=boolean or multiple
 
         let amount = 10;
-        let category = 19;
+        let category = 27;
         let url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=multiple`;
         const method = "get";
         fetch(url, {
