@@ -138,9 +138,6 @@ export default {
     border-radius: 5px;
     transition: 0.4s ease;
 }
-.btn:hover {
-    transform: scale(0.98);
-}
 .btn:focus,
 .btn:active {
     box-shadow: none !important;
