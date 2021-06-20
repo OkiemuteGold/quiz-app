@@ -49,13 +49,6 @@ export default {
             answered: false,
         };
     },
-    // computed: {
-    //     answers() {
-    //         let answers = [...this.currentQuestion.incorrect_answers];
-    //         answers.push(this.currentQuestion.correct_answer);
-    //         return answers;
-    //     },
-    // },
     watch: {
         currentQuestion: {
             immediate: true,
@@ -109,13 +102,13 @@ export default {
 
 <style scoped>
 .question-box-container {
-    min-width: 400px;
     margin-top: 20px;
 }
 .jumbotron {
-    padding: 4rem 3rem;
+    padding: 2rem;
     width: 100%;
     background-color: #f2f2f2;
+    margin: auto;
 }
 .lead {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -126,9 +119,10 @@ export default {
 .list-group-item {
     margin-bottom: 5px;
     cursor: pointer;
+    transition: 0.4s ease;
 }
 .list-group-item:not(.selected):hover {
-    background-color: #eee;
+    background-color: #edf5f7;
 }
 .btn {
     margin: 0 5px;

@@ -1,9 +1,5 @@
 <template>
     <div id="app">
-        <!-- <div id="nav">
-            <router-link to="/">Home</router-link>
-        </div>
-        <router-view /> -->
         <Header :numCorrect="numCorrect" :numTotal="numTotal" />
 
         <div
@@ -14,7 +10,7 @@
 
         <b-container class="bv-example-row">
             <b-row>
-                <b-col sm="6" offset="3">
+                <b-col sm="6" offset-sm="3">
                     <QuestionBox
                         v-if="questions.length"
                         :currentQuestion="questions[index]"
@@ -43,8 +39,6 @@ export default {
             index: 0,
             numCorrect: 0,
             numTotal: 0,
-            // amount: 10,
-            // category: 21,
         };
     },
     methods: {
@@ -109,17 +103,4 @@ export default {
     margin: 0;
     padding: 10px;
 }
-
-/* #nav {
-    padding: 30px;
-}
-
-#nav a {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-    color: #42b983;
-} */
 </style>
