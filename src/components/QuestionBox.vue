@@ -9,9 +9,9 @@
 
             <b-list-group>
                 <b-list-group-item
-                    v-for="(answer, index) in answers"
+                    v-for="(answer, index) in shuffledAnswers"
                     :key="index"
-                    @click="selectedAnswer(index)"
+                    @click.prevent="selectedAnswer(index)"
                     :class="answerClass(index)"
                 >
                     {{ answer }}
@@ -49,13 +49,13 @@ export default {
             answered: false,
         };
     },
-    computed: {
-        answers() {
-            let answers = [...this.currentQuestion.incorrect_answers];
-            answers.push(this.currentQuestion.correct_answer);
-            return answers;
-        },
-    },
+    // computed: {
+    //     answers() {
+    //         let answers = [...this.currentQuestion.incorrect_answers];
+    //         answers.push(this.currentQuestion.correct_answer);
+    //         return answers;
+    //     },
+    // },
     watch: {
         currentQuestion: {
             immediate: true,
@@ -90,7 +90,7 @@ export default {
         },
         answerClass(index) {
             let answerClass = "";
-            if (!this.answered && this.selectedIndex === null) {
+            if (!this.answered && this.selectedIndex === index) {
                 answerClass = "selected";
             } else if (this.answered && this.correctIndex === index) {
                 answerClass = "correct";
@@ -102,18 +102,6 @@ export default {
                 answerClass = "incorrect";
             }
             return answerClass;
-
-            // [
-            //     !answered && selectedIndex === null
-            //         ? "selected"
-            //         : answered && correctIndex === index
-            //         ? "correct"
-            //         : answered &&
-            //           selectedIndex === index &&
-            //           correctIndex !== index
-            //         ? "incorrect"
-            //         : "",
-            // ];
         },
     },
 };
@@ -136,6 +124,7 @@ export default {
     margin-bottom: 20px;
 }
 .list-group-item {
+    margin-bottom: 5px;
     cursor: pointer;
 }
 .list-group-item:not(.selected):hover {
@@ -143,7 +132,7 @@ export default {
 }
 .btn {
     margin: 0 5px;
-    width: 100px;
+    width: 90px;
 }
 .btn:focus,
 .btn:active {
