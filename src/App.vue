@@ -4,7 +4,7 @@
             <router-link to="/">Home</router-link>
         </div>
         <router-view /> -->
-        <Header />
+        <Header :numCorrect="numCorrect" :numTotal="numTotal" />
 
         <div
             id="error"
@@ -19,6 +19,7 @@
                         v-if="questions.length"
                         :currentQuestion="questions[index]"
                         :nextQuestion="next"
+                        :increment="increment"
                     />
                 </b-col>
             </b-row>
@@ -40,6 +41,8 @@ export default {
         return {
             questions: [],
             index: 0,
+            numCorrect: 0,
+            numTotal: 0,
             // amount: 10,
             // category: 21,
         };
@@ -48,6 +51,12 @@ export default {
         next() {
             this.index += 1;
         },
+        increment(isCorrect) {
+            if (isCorrect) {
+                this.numCorrect += 1;
+            }
+            this.numTotal += 1;
+        },
     },
     mounted() {
         // url format: https://opentdb.com/api.php?amount=15&category=19&difficulty=medium&type=multiple
@@ -55,7 +64,7 @@ export default {
         // type=boolean or multiple
 
         let amount = 10;
-        let category = 21;
+        let category = 19;
         let url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=multiple`;
         const method = "get";
         fetch(url, {
@@ -81,32 +90,24 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
-
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 #app {
-    font-family: "lato", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    /* color: #2c3e50; */
-    color: #222;
+    color: #2c3e50;
 }
-.show-error {
+.showError {
     background: #f00;
     color: #fff;
 }
 #error {
+    width: 600px;
     margin: 20px auto;
-    padding: 20px 10px;
     border-radius: 5px;
 }
 #error p {
     margin: 0;
+    padding: 10px;
 }
 
 /* #nav {

@@ -18,25 +18,34 @@
                 </b-list-group-item>
             </b-list-group>
 
-            <b-button variant="success" href="#">Submit</b-button>
-            <b-button variant="primary" href="#" @click="nextQuestion"
-                >Next</b-button
+            <b-button
+                variant="success"
+                @click="submitAnswer"
+                :disabled="selectedIndex === null || isAnswered"
             >
+                Submit
+            </b-button>
+            <b-button variant="primary" @click="nextQuestion">Next</b-button>
         </b-jumbotron>
     </div>
 </template>
 
 <script>
+import _ from "lodash";
+
 export default {
     name: "QuestionBox",
     components: {},
     props: {
         currentQuestion: Object,
         nextQuestion: Function,
+        increment: Function,
     },
     data() {
         return {
             selectedIndex: null,
+            shuffledAnswers: [],
+            isAnswered: false,
         };
     },
     computed: {
@@ -49,6 +58,31 @@ export default {
     methods: {
         selectedAnswer(index) {
             this.selectedIndex = index;
+        },
+        submitAnswer() {
+            let isCorrect = false;
+            if (this.selectedIndex === this.currentQuestion.correct_answer) {
+                isCorrect = true;
+            }
+            this.isAnswered = true;
+            this.increment(isCorrect);
+        },
+        shuffleAnswers() {
+            let answers = [
+                ...this.currentQuestion.incorrect_answers,
+                this.currentQuestion.correct_answer,
+            ];
+            this.shuffledAnswers = _.shuffle(answers);
+        },
+    },
+    watch: {
+        currentQuestion: {
+            immediate: true,
+            handler() {
+                this.selectedIndex = null;
+                this.isAnswered = false;
+                this.shuffleAnswers();
+            },
         },
     },
 };
