@@ -236,5 +236,8 @@ export default {
     .jumbotron {
         padding: 1rem 1.5rem;
     }
+    .lead {
+        font-size: 18px;
+    }
 }
 </style>
