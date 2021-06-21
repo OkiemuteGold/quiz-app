@@ -229,7 +229,7 @@ export default {
 }
 @media screen and (max-width: 500px) {
     .question-box-container {
-        margin: 22px auto 0;
+        margin: 20px auto 0;
     }
 }
 @media screen and (max-width: 374px) {
