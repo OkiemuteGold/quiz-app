@@ -1,37 +1,43 @@
 <template>
-    <div id="app">
-        <Header :numCorrect="numCorrect" :numTotal="numTotal" />
+    <div id="app" class="bg-dark">
+        <div class="container">
+            <Header :numCorrect="numCorrect" :numTotal="numTotal" />
 
-        <div
-            id="error"
-            v-if="questions.length == 0"
-            :class="{ showError: questions.length == 0 }"
-        ></div>
+            <div
+                id="error"
+                v-if="questions.length == 0"
+                :class="{ showError: questions.length == 0 }"
+            ></div>
 
-        <b-container class="bv-example-row">
-            <b-row>
-                <b-col sm="6" offset-sm="3">
-                    <QuestionBox
-                        v-if="questions.length"
-                        :currentQuestion="questions[index]"
-                        :nextQuestion="next"
-                        :increment="increment"
-                    />
-                </b-col>
-            </b-row>
-        </b-container>
+            <b-container class="bv-example-row">
+                <b-row>
+                    <b-col md="6" offset-md="3">
+                        <QuestionBox
+                            v-if="questions.length"
+                            :currentQuestion="questions[index]"
+                            :nextQuestion="next"
+                            :increment="increment"
+                        />
+                    </b-col>
+                </b-row>
+            </b-container>
+
+            <Footer />
+        </div>
     </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
 import QuestionBox from "./components/QuestionBox.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
     name: "app",
     components: {
         Header,
         QuestionBox,
+        Footer,
     },
     data() {
         return {
@@ -57,7 +63,7 @@ export default {
         // category 9 = general knowledge, 19 = mathematics, 21 = sports, 27 = animals
         // type=boolean or multiple
 
-        let amount = 20;
+        let amount = 40;
         let category = 19;
         let url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=multiple`;
         const method = "get";
@@ -89,7 +95,8 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #222;
-    overflow: hidden;
+    overflow-x: hidden;
+    height: 100vh;
 }
 .showError {
     background: #f00;

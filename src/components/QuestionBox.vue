@@ -108,12 +108,15 @@ export default {
 
 <style scoped>
 .question-box-container {
-    margin-top: 20px;
+    margin: 50px auto 0;
+    max-width: 450px;
 }
 .jumbotron {
     padding: 2rem;
     width: 100%;
-    background-color: #f2f2f2;
+    color: #a9a9a9;
+    /* background-color: #eaeaea; */
+    background-color: rgba(0, 0, 0, 0.3);
     margin: auto;
 }
 .lead {
@@ -130,7 +133,7 @@ export default {
     letter-spacing: 0.5px;
 }
 .list-group-item:not(.selected):hover {
-    background-color: #e8f1f3;
+    background-color: #d1e6eb;
 }
 .btn {
     margin: 0 5px;
@@ -144,7 +147,7 @@ export default {
 }
 
 .selected {
-    background: lightblue;
+    background: lightskyblue;
 }
 .correct,
 .incorrect {
@@ -214,6 +217,25 @@ export default {
         font-weight: 500;
         background: red;
         color: #222;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 900px) {
+    .question-box-container {
+        margin: 35px auto 0;
+    }
+}
+@media screen and (min-width: 375px) and (max-width: 500px) {
+    .question-box-container {
+        margin: 22px auto 0;
+    }
+}
+@media screen and (max-width: 374px) {
+    .question-box-container {
+        margin: 25px auto 0;
+    }
+    .jumbotron {
+        padding: 1rem 1.5rem;
     }
 }
 </style>

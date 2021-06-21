@@ -1,17 +1,37 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
+
+    <!-- Meta Description -->
+    <meta name="application-name" content="Multi-Choice Quiz" />
+    <meta name="author" content="Okiemute Gold" />
+    <meta name="description"
+        content="A multi-choice vue.js quiz application which fetches multiple questions from http://opentdb.com/ that adults, children, and teens of diverse age category can use to test and build their knowledge of different subjects and professional disciplines." />
+    <meta name="generator" content="Vue.js" />
+    <meta name="keywords"
+        content="vue, js, quiz, application, multi choice questions, counter, timer, answer, difficulty level, easy medium hard, category, general knowledge, mathematics, sports, animals" />
+
+    <meta property="og:title" content="Vue.js Multi-Choice Quiz App" />
+    <meta property="og:url" content="https://multichoice-quiz.netlify.app/" />
+    <meta property="og:type" content="Web Application" />
+    <meta property="og:description" content="Multi-Choice Quiz Application Made By Okiemute Gold" />
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+</head>
+
+<body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+        <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+                Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-  </body>
+</body>
+
 </html>
