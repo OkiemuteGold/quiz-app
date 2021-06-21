@@ -33,13 +33,14 @@ export default {
 .nav-tabs .nav-link {
     border: none;
     cursor: auto;
+    color: #3a89ff;
 }
-.nav-tabs .nav-link:hover {
+/* .nav-tabs .nav-link:hover {
     border: none;
     color: #0d6efd;
-}
+} */
 .nav-tabs .nav-link.disabled {
-    color: #eaeaea;
+    color: #eee;
 }
 h1 {
     font-size: 1.5em;
@@ -53,10 +54,14 @@ h1 {
 @media screen and (max-width: 500px) {
     .nav {
         flex-direction: column;
-        align-items: center;
     }
     .nav-link {
         padding: 0.3rem 1rem;
+    }
+}
+@media only screen and (width: 360px) {
+    .nav {
+        margin-top: 10px;
     }
 }
 </style>

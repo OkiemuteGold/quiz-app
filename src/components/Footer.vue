@@ -1,9 +1,13 @@
 <template>
     <div>
         <footer>
+            <!-- rel="noopener" or rel="noreferrer" -->
             <p>
                 &copy; <span id="footer-year"></span>
-                <a href="https://github.com/OkiemuteGold" target="_blank"
+                <a
+                    href="https://github.com/OkiemuteGold"
+                    rel="noopener noreferrer"
+                    target="_blank"
                     >Okiemute Gold</a
                 >
             </p>
@@ -40,14 +44,14 @@ footer {
     left: 0;
     right: 0;
     margin: auto;
-    color: #eaeaea;
+    color: #eee;
 }
 footer p {
     margin-bottom: 0;
 }
 footer a {
     margin-left: 3px;
-    color: #eaeaea;
+    color: #eee;
     transition: 0.4s ease;
 }
 footer a:hover {
@@ -57,6 +61,11 @@ footer a:hover {
 @media screen and (min-width: 370px) and (max-width: 423px) {
     footer {
         padding: 10px 20px;
+    }
+}
+@media only screen and (width: 360px) {
+    footer {
+        bottom: 10px;
     }
 }
 </style>

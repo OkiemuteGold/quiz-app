@@ -114,8 +114,7 @@ export default {
 .jumbotron {
     padding: 2rem;
     width: 100%;
-    color: #eaeaea;
-    /* background-color: #eaeaea; */
+    color: #eee;
     background-color: rgba(0, 0, 0, 0.3);
     margin: auto;
 }
@@ -131,6 +130,9 @@ export default {
     cursor: pointer;
     transition: 0.4s ease-in-out;
     letter-spacing: 0.5px;
+    color: #222;
+    border: none;
+    font-weight: 400;
 }
 .list-group-item:not(.selected):hover {
     background-color: #d1e6eb;
@@ -151,7 +153,7 @@ export default {
 }
 .correct,
 .incorrect {
-    font-weight: 500;
+    font-weight: 700;
 }
 .correct {
     background: lightgreen;
@@ -190,7 +192,7 @@ export default {
     }
 
     100% {
-        font-weight: 500;
+        font-weight: 700;
         background: lightgreen;
         color: #222;
     }
@@ -214,7 +216,7 @@ export default {
     }
 
     100% {
-        font-weight: 500;
+        font-weight: 700;
         background: red;
         color: #222;
     }
