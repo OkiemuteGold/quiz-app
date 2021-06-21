@@ -122,7 +122,7 @@ export default {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .list-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .list-group-item {
     margin-bottom: 5px;
@@ -222,20 +222,17 @@ export default {
     }
 }
 
-@media screen and (min-width: 500px) and (max-width: 900px) {
+@media screen and (max-width: 900px) {
     .question-box-container {
         margin: 35px auto 0;
     }
 }
-@media screen and (min-width: 375px) and (max-width: 500px) {
+@media screen and (max-width: 500px) {
     .question-box-container {
         margin: 22px auto 0;
     }
 }
 @media screen and (max-width: 374px) {
-    .question-box-container {
-        margin: 25px auto 0;
-    }
     .jumbotron {
         padding: 1rem 1.5rem;
     }

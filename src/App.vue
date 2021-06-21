@@ -103,7 +103,7 @@ export default {
     color: #fff;
 }
 #error {
-    width: 600px;
+    max-width: 600px;
     margin: 20px auto;
     border-radius: 5px;
 }
