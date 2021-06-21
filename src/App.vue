@@ -63,7 +63,7 @@ export default {
         // category 9 = general knowledge, 19 = mathematics, 21 = sports, 27 = animals
         // type=boolean or multiple
 
-        let amount = 40;
+        let amount = 30;
         let category = 19;
         let url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=multiple`;
         const method = "get";
