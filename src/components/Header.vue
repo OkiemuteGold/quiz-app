@@ -39,7 +39,7 @@ export default {
     color: #0d6efd;
 }
 .nav-tabs .nav-link.disabled {
-    color: #a9a9a9;
+    color: #eaeaea;
 }
 h1 {
     font-size: 1.5em;

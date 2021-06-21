@@ -40,14 +40,14 @@ footer {
     left: 0;
     right: 0;
     margin: auto;
-    color: #a9a9a9;
+    color: #eaeaea;
 }
 footer p {
     margin-bottom: 0;
 }
 footer a {
     margin-left: 3px;
-    color: #a9a9a9;
+    color: #eaeaea;
     transition: 0.4s ease;
 }
 footer a:hover {

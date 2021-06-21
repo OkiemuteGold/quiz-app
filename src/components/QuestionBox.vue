@@ -114,7 +114,7 @@ export default {
 .jumbotron {
     padding: 2rem;
     width: 100%;
-    color: #a9a9a9;
+    color: #eaeaea;
     /* background-color: #eaeaea; */
     background-color: rgba(0, 0, 0, 0.3);
     margin: auto;
