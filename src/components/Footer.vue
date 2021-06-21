@@ -63,9 +63,9 @@ footer a:hover {
         padding: 10px 20px;
     }
 }
-@media only screen and (width: 360px) {
+/* @media only screen and (width: 360px) {
     footer {
         bottom: 10px;
     }
-}
+} */
 </style>

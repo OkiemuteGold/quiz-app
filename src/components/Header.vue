@@ -59,9 +59,9 @@ h1 {
         padding: 0.3rem 1rem;
     }
 }
-@media only screen and (width: 360px) {
+/* @media only screen and (width: 360px) {
     .nav {
         margin-top: 10px;
     }
-}
+} */
 </style>
