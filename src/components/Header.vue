@@ -7,8 +7,8 @@
                 </h1>
             </b-nav-item>
             <b-nav-item>
-                Counter:
-                <span>{{ numCorrect }}</span> / <span>{{ numTotal }}</span>
+                Answered:
+                <span>{{ numCorrect }}</span> out of <span>{{ numTotal }}</span>
             </b-nav-item>
         </b-nav>
     </div>
@@ -33,8 +33,19 @@ export default {
 .nav-tabs .nav-link {
     border: none;
     cursor: auto;
-    color: #3a89ff;
+    color: #fff;
 }
+
+.nav-tabs .nav-link span {
+    color: #3a89ff;
+    background: #fff;
+    font-weight: 600;
+    padding: 2px 5px;
+}
+.nav-tabs .nav-link span:first-child {
+    color: lightgreen;
+}
+
 /* .nav-tabs .nav-link:hover {
     border: none;
     color: #0d6efd;

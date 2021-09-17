@@ -17,6 +17,8 @@
                             :currentQuestion="questions[index]"
                             :nextQuestion="next"
                             :increment="increment"
+                            :questions="questions"
+                            :index="index"
                         />
                     </b-col>
                 </b-row>
@@ -57,13 +59,18 @@ export default {
             }
             this.numTotal++;
         },
+        // reset() {
+        //     this.index = 0;
+        //     this.numCorrect = 0;
+        //     this.numTotal = 0;
+        // },
     },
     mounted() {
         // url format: https://opentdb.com/api.php?amount=15&category=19&difficulty=medium&type=multiple
         // category 9 = general knowledge, 19 = mathematics, 21 = sports, 27 = animals
         // type=boolean or multiple
 
-        let amount = 30;
+        let amount = 2;
         let category = 19;
         let url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=multiple`;
         const method = "get";

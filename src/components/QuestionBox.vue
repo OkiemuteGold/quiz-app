@@ -29,9 +29,13 @@
             <b-button
                 variant="primary"
                 @click="nextQuestion"
+                v-if="notLastQuestion"
                 :disabled="!answered"
                 >Next</b-button
             >
+            <!-- <b-button variant="primary" @click="resetQuestion" v-else
+                >Try again</b-button
+            > -->
         </b-jumbotron>
     </div>
 </template>
@@ -45,7 +49,10 @@ export default {
     props: {
         currentQuestion: Object,
         nextQuestion: Function,
+        // resetQuestion: Function,
         increment: Function,
+        questions: Array,
+        index: Number,
     },
     data() {
         return {
@@ -53,6 +60,7 @@ export default {
             correctIndex: null,
             shuffledAnswers: [],
             answered: false,
+            notLastQuestion: true,
         };
     },
     watch: {
@@ -70,6 +78,14 @@ export default {
             this.selectedIndex = index;
         },
         submitAnswer() {
+            if (this.index + 1 == this.questions.length) {
+                // console.log(this.index);
+                // console.log(this.questions.length);
+                // console.log("last");
+
+                this.notLastQuestion = !this.notLastQuestion;
+            }
+
             let isCorrect = false;
             if (this.selectedIndex === this.correctIndex) {
                 isCorrect = true;
